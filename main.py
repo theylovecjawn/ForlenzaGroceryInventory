@@ -2,31 +2,42 @@
 inventory = {}
 
 # Function to add items to the inventory.
+
 def add_item():
-    name = input("Enter the item name: ")
-    quantity = int(input("Enter the quantity: ")
-    
-    # Check if the item is already in the inventory and update its quantity.
-    if name in inventory:
-        inventory[name] += quantity
-    else:
-        # If the item is not in the inventory, add it with the specified quantity.
-        inventory[name] = quantity
+    try:
+        name = input("Enter the item name: ")
+        quantity = int(input("Enter the quantity: ")) #Added a closing parenthesis
+                
+        # Check if the item is already in the inventory and update its quantity.
+        if name in inventory:
+            inventory[name] += quantity
+        else:
+            # If the item is not in the inventory, add it with the specified quantity.
+            inventory[name] = quantity
+    except ValueError:
+        print("please give a numerical value")
+
 
 # Function to remove items from the inventory.
+
+
 def remove_item():
-    name = input("Enter the item name to remove: ")
-    
-    # Check if the item is in the inventory.
-    if name in inventory:
-        quantity = int(input("Enter the quantity to remove: "))
-        # Check if there is enough of the item in the inventory to remove.
-        if quantity <= inventory[name]:
-            inventory[name] -= quantity
+    try:
+        name = input("Enter the item name to remove: ")
+                
+        # Check if the item is in the inventory.
+        if name in inventory:
+            quantity = int(input("Enter the quantity to remove: "))
+            # Check if there is enough of the item in the inventory to remove.
+            if quantity <= inventory[name]:
+                inventory[name] -= quantity
+            else:
+                print("Not enough of that item in the inventory.")
         else:
-            print("Not enough of that item in the inventory.")
-    else:
-        print("Item not found in the inventory.")
+            print("Item not found in the inventory.")
+    except ValueError:
+        print("please give a numerical value")
+
 
 # Function to view the current inventory.
 def view_inventory():
@@ -43,6 +54,7 @@ def search_item():
     else:
         print(f"{name} is not in stock.")
 
+
 while True:
     print("\nInventory Management System")
     print("1. Add Item")
@@ -50,12 +62,14 @@ while True:
     print("3. View Inventory")
     print("4. Search Item")
     print("5. Quit")
-    
+        
     choice = input("Enter your choice: ")
-    
+        
     # Menu-driven program to perform various actions based on user input.
+        
     if choice == "1":
         add_item()
+
     elif choice == "2":
         remove_item()
     elif choice == "3":
@@ -68,3 +82,5 @@ while True:
     else:
         # Handle invalid input from the user.
         print("Invalid choice. Please try again.")
+
+
